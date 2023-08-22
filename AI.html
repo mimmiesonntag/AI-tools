@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <title>AI Tools Showcase</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .tool {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .tool-description {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .tool-link {
+            color: blue;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>AI Tools Showcase</h1>
+    </div>
+    <div class="container">
+        <div class="section">
+            <h2 class="section-title">Natural Language Processing (NLP)</h2>
+            <div class="tool">
+                <div class="tool-description">
+                    <h3>Text Summarization</h3>
+                    <p>Automatically generate concise summaries of long text.</p>
+                </div>
+                <a class="tool-link" href="#">Try Now</a>
+            </div>
+            <!-- Add more NLP tools here -->
+            
+        </div>
+        <div class="section">
+            <h2 class="section-title">Image Processing</h2>
+        <div class="tool">
+    <div class="tool-description">
+        <h3>Text Summarization</h3>
+        <p>Automatically generate concise summaries of long text.</p>
+        <textarea id="inputText" rows="6" placeholder="Enter your long text here"></textarea>
+        <button id="summarizeButton">Summarize</button>
+        <div id="summaryOutput" style="display: none;">
+            <h4>Summary:</h4>
+            <p id="summaryText"></p>
+        </div>
+    </div>
+    <a class="tool-link" href="#">Try Now</a>
+</div>
+</div>
+
+            </div>
+            <!-- Add more image processing tools here -->
+        </div>
+        <!-- Add more sections for different areas -->
+    </div>
+ <script>
+    const summarizeButton = document.getElementById("summarizeButton");
+    const inputText = document.getElementById("inputText");
+    const summaryOutput = document.getElementById("summaryOutput");
+    const summaryText = document.getElementById("summaryText");
+
+    summarizeButton.addEventListener("click", () => {
+        const textToSummarize = inputText.value;
+
+        if (textToSummarize.trim() === "") {
+            return;
+        }
+
+        $.ajax({
+            url: "https://api.smmry.com",
+            method: "POST",
+            data: {
+                sm_api_input: textToSummarize,
+                sm_length: 3, // Number of sentences in the summary
+            },
+            success: (data) => {
+                summaryText.textContent = data.sm_api_content;
+                summaryOutput.style.display = "block";
+            },
+            error: (error) => {
+                console.error("Error summarizing text:", error);
+            },
+        });
+    });
+</script>
+
+
+</body>
+</html>

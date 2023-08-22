@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Summarization Example</title>
+</head>
+<body>
+    <h1>Text Summarization Example</h1>
+    <textarea id="inputText" rows="6" placeholder="Enter your long text here"></textarea>
+    <button id="summarizeButton">Summarize</button>
+    <div id="summaryOutput"></div>
+
+    <script>
+        const summarizeButton = document.getElementById("summarizeButton");
+        const inputText = document.getElementById("inputText");
+        const summaryOutput = document.getElementById("summaryOutput");
+
+        summarizeButton.addEventListener("click", () => {
+            const textToSummarize = inputText.value;
+
+            if (textToSummarize.trim() === "") {
+                return;
+            }
+
+            // This is a simplified example using the `nodejieba` library for text summarization.
+            // This library may not work directly in the browser; it's shown here for illustrative purposes.
+            const summarizedText = summarizeWithNodejieba(textToSummarize);
+
+            summaryOutput.textContent = summarizedText;
+        });
+
+        // Simplified text summarization using `nodejieba` (this won't work directly in the browser).
+        function summarizeWithNodejieba(text) {
+            // Replace this with actual `nodejieba` usage in a Node.js environment.
+            // This is just a placeholder.
+            return "Summarized text using nodejieba.";
+        }
+    </script>
+</body>
+</html>
